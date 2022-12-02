@@ -23,6 +23,9 @@ RUN set -ex \
     && pyenv global $PYTHON_VERSION \
     && pyenv rehash
 
+# install upload file to swift dependencies
+RUN pip install keystoneauth1 python-swiftclient 
+
 # copy python script
 COPY ntw-meas/ntw-meas.py /tmp/ntw-meas.py
 
