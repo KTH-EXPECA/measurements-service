@@ -28,6 +28,7 @@ RUN pip install keystoneauth1 python-swiftclient
 
 # copy python script
 COPY ntw-meas/ntw-meas.py /tmp/ntw-meas.py
+COPY combined/upload_files.py /tmp/upload_files.py
 
 RUN mkdir -p /tmp/results
 COPY combined/combined-entrypoint.sh /tmp/combined-entrypoint.sh
