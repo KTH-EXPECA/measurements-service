@@ -48,5 +48,8 @@ docker run -v .:/tmp/results
 ```
 
 
-
-
+```
+docker build -t combined-meas -f combined/Dockerfile .
+docker tag combined-meas samiemostafavi/combined-meas
+docker image push samiemostafavi/combined-meas
+```

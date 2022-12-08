@@ -11,15 +11,21 @@ import sys
 #
 # environment varialbes set at terminal:
 # export AUTH_SERVER=10.0.87.254; export AUTH_PROJECT_NAME=openstack; export AUTH_USERNAME=admin; export AUTH_PASSWORD=password;
+#
+# example
+# python3 upload_files.py /tmp/results/irtt_data.json students-project
 
 def main():
     args_num = len(sys.argv)
-    if args_num == 1:
-        print("no file path is provided")
+    if args_num <= 2:
+        print("no file path or container name is provided")
         return
     
     full_file_addr = sys.argv[1]
     print(f"file addr to upload: {full_file_addr}")
+
+    container = sys.argv[2]
+    print(f"swift container name to upload to: {container}")
 
     auth_server = os.environ.get('AUTH_SERVER')
     if not auth_server:
@@ -57,8 +63,6 @@ def main():
     # Create swiftclient Connection
     conn = Connection(session=keystone_session)
 
-    container = 'students-project'
-    
     file_addr, file_name = os.path.split(full_file_addr)
     with open(full_file_addr, 'rb') as f:
         file_data = f.read()
