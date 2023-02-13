@@ -1,2 +1,2 @@
 #!/bin/bash
-irtt client -i 10ms -d 100s -l 172 --fill=rand --sfill=rand -o /tmp/results/irtt_data.json 10.99.99.3
+irtt client -i $IRTT_INTERVAL -d $IRTT_DURATION -l $IRTT_LENGTH --fill=rand --sfill=rand -o $IRTT_OUTPUT $IRTT_SERVER_IP
